@@ -28,4 +28,12 @@
 
 ### 피드백 
 
- <p>int와 long의 범위를 확인하자</p>
+int와 long의 메모리 사용 크기를 확인하자
+
+|타입|메모리 사용크기||
+|------|------|-|
+|byte|1byte|8bit|
+|short|2byte|16bit|
+|char|2byte|16bit|
+|int|4byte|32bit|
+|long|8byte|64bit|
