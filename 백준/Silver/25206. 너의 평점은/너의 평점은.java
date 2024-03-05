@@ -38,6 +38,7 @@ public class Main {
                 case "F":  totalClass += cls;
                             totalScore += cls*0.0;
                             break;
+                default:    break;
             }
         }
         float result = totalScore/totalClass;
