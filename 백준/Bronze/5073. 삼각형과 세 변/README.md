@@ -36,3 +36,5 @@
 
  <p>각 입력에 맞는 결과 (Equilateral, Isosceles, Scalene, Invalid) 를 출력하시오.</p>
 
+### 복습
+sort를 사용하였는데 String에서의 sort 기준과 Integer의 sort 기준이 다르다. 이를 유의할 것.
