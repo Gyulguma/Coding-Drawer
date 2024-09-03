@@ -1,32 +1,23 @@
-import java.util.Scanner;
- 
+import java.util.*;
+
 public class Main {
-	public static void main(String[] args) {
- 
-		Scanner in = new Scanner(System.in);
-        
-		int N = in.nextInt();
-        
-		int result = 0;
- 
-		
-		for(int i = 0; i < N; i++) {
-			int number = i;
-			int sum = 0;	// 각 자릿수 합 변수 
-			
-			while(number != 0) {
-				sum += number % 10;	// 각 자릿수 더하기
-				number /= 10;
-			}
-			
-			// i 값과 각 자릿수 누적합이 같을 경우 (생성자를 찾았을 경우) 
-			if(sum + i == N) {
-				result = i;
-				break;
-			}
-			
-		}
- 
-		System.out.println(result);
-	}
+    static int result = 0;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int result = 0;
+        for(int i=n-1; i>0; i--){
+            int m = i;
+            int temp = i;
+            while(temp/10 != 0){
+                m += temp%10;
+                temp /= 10;
+            }
+            m += temp;
+            if(m == n) {
+                result = i;
+            }
+        }
+        System.out.println(result);
+    }
 }
