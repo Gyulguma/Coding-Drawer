@@ -1,39 +1,63 @@
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.PriorityQueue;
+import java.util.*;
+
 class Solution {
     public int[] solution(String[] operations) {
-        int[] answer = new int[2];
-        PriorityQueue<Integer> minPq = new PriorityQueue<>();
-        PriorityQueue<Integer> maxPq = new PriorityQueue<>(Collections.reverseOrder());
-
-        for(int i=0; i< operations.length;i++){
-            String[] operation = operations[i].split(" ");
-            String operator = operation[0];
-            int operand = Integer.parseInt(operation[1]);
-            if(operator.equals("I")){
-                minPq.add(operand);
-                maxPq.add(operand);
+        
+        DoublePriorityQueue<Integer> dp = new DoublePriorityQueue<>();
+        for(String operation : operations){
+            String operator = operation.split(" ")[0];
+            int operand = Integer.parseInt(operation.split(" ")[1]);
+            
+            if(operator.equals("I")) {
+                dp.insert(operand);
+                continue;
             }
-            else if(operator.equals("D")){
-                if(maxPq.isEmpty()) continue;
-                if(operand == 1){
-                    int max = maxPq.poll();
-                    minPq.remove(max);
-                } else if(operand == -1){
-                    int min = minPq.poll();
-                    maxPq.remove(min);
-                }
+            if(operand == 1){
+                dp.removeMax();
+                continue;
+            }
+            if(operand == -1){
+                dp.removeMin();
+                continue;
             }
         }
-        if(maxPq.isEmpty()){
-            answer[0]=0;
-            answer[1]=0;
+        
+        if(dp.isEmpty()) return new int[]{0,0};
+        return new int[]{dp.getMax(), dp.getMin()};
+    }
+    
+    private class DoublePriorityQueue<E extends Comparable<? super E>> {
+        private PriorityQueue<E> minHeap;
+        private PriorityQueue<E> maxHeap;
+        
+        public DoublePriorityQueue(){
+            this.minHeap = new PriorityQueue<>();
+            this.maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
         }
-        else{
-            answer[0] = maxPq.poll();
-            answer[1] = minPq.poll();
+        
+        public void insert(E element){
+            this.minHeap.offer(element);
+            this.maxHeap.offer(element);
         }
-        return answer;
+        
+        public boolean isEmpty(){
+            return this.minHeap.isEmpty();
+        }
+        
+        public void removeMin(){
+            this.maxHeap.remove(this.minHeap.poll());
+        }
+        
+        public void removeMax(){
+            this.minHeap.remove(this.maxHeap.poll());
+        }
+        
+        public E getMin(){
+            return this.minHeap.peek();
+        }
+        
+        public E getMax(){
+            return this.maxHeap.peek();
+        }
     }
 }
