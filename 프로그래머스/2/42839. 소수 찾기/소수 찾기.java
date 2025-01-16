@@ -1,41 +1,44 @@
 import java.util.*;
 
 class Solution {
-    private boolean[] visited = new boolean[7];
     private Set<Integer> set = new HashSet<>();
+    private boolean[] visited;
     
     public int solution(String numbers) {
-        int answer = 0;
+        //만들수 있는 숫자
+        //소수인지 판별
+        //소수이면 return+1
+        visited = new boolean[numbers.length()];
+        char[] charArr = numbers.toCharArray();
+        recur(charArr, 0, "");
         
-        for(int i=0; i<numbers.length(); i++){
-            dfs(numbers, "", 1);
-        }
-        
-        for(int number : set){
-            if(check(number)) answer++;
-        }
-        return answer;
+        for(int number : set) System.out.print(number+" ");
+        return set.size();
     }
     
-    private void dfs(String numbers, String s, int depth){
-        // base condition
-        if(depth > numbers.length()) return;
+    private void recur(char[] numbers, int length, String current){
+        if(length > numbers.length) {
+            return;
+        }
+        if(length != 0 && isPrime(Integer.parseInt(current))) set.add(Integer.parseInt(current));
         
-         for (int i = 0; i < numbers.length(); i++) {
-            if(!visited[i]) {
-                visited[i] = true;
-                set.add(Integer.parseInt(s + numbers.charAt(i)));
-                dfs(numbers ,s + numbers.charAt(i), depth + 1);
-                visited[i] = false;
-            }
+        for(int i=0; i<numbers.length; i++){
+            if(visited[i]) continue;
+            visited[i] = true;
+            recur(numbers, length+1, current+numbers[i]);
+            visited[i] = false;
         }
     }
     
-    private boolean check(int number){
-        if(number <2) return false;
-        for(int i=2; i<=number/2;i++){
+    //소수인지 판별하는 함수
+    private boolean isPrime(int number){
+        if(number==1 || number <= 0) return false;
+        if(number==2) return true;
+        
+        for(int i=2; i <= Math.sqrt(number); i++){
             if(number%i == 0) return false;
         }
         return true;
     }
+    
 }
