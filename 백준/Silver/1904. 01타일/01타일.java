@@ -1,33 +1,29 @@
-import java.util.Scanner;
- 
+import java.io.*;
+import java.util.*;
+
 public class Main {
- 
-	public static int[] dp = new int[1000001];;
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		
-		int N = in.nextInt();
-		
-		
-		dp[0] = 0;
-		dp[1] = 1;
-		dp[2] = 2;
- 
-		// -1 로 초기화
-		for(int i = 3; i < dp.length; i++) {
-			dp[i] = -1;
-		}
-		
-		System.out.println(Tile(N));
-		
-	}
+	private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	
-	public static int Tile(int N) {
-		
-		if(dp[N] == -1) {
-			dp[N] = (Tile(N - 1) + Tile((N - 2))) % 15746;
-		}
-		return dp[N];
-	}
- 
+    public static void main(String[] args) throws IOException {
+        int n = Integer.parseInt(br.readLine());
+        
+        int[] dp = new int[n+1];
+        
+        dp[1] = 1;
+        if(n==1) {
+        	System.out.println(1);
+        	return;
+        }
+        dp[2] = 2;
+        if(n==2) {
+        	System.out.println(2);
+        	return;
+        }
+        for(int i=3; i<=n; i++) {
+        	dp[i] = (dp[i-1] + dp[i-2])%15746;
+        }
+        
+        System.out.println(dp[n]);
+    }
+    
 }
