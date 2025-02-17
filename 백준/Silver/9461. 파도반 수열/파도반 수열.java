@@ -1,32 +1,27 @@
-import java.util.Scanner;
- 
+import java.io.*;
+import java.util.*;
+
 public class Main {
+	private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	
-	public static Long[] seq = new Long[101];
- 
-	public static void main(String[] args) {
-		
-		Scanner in = new Scanner(System.in);
-		
-		seq[0] = 0L;
-		seq[1] = 1L;
-		seq[2] = 1L;
-		seq[3] = 1L;
-		
-		int T = in.nextInt();
-		
-		while(T-- > 0) {
-			int N = in.nextInt();
-			System.out.println(padovan(N));
-		}
-		
-	}
-	
-	public static long padovan(int N) {
-		if(seq[N] == null) {	// 탐색하지 않은 인덱스일 경우 재귀호출
-			seq[N] = padovan(N - 2) + padovan(N - 3);
-		}
-		return seq[N];
-	}
- 
+    public static void main(String[] args) throws IOException {
+    	StringBuilder sb = new StringBuilder();
+    	
+    	int repeat = Integer.parseInt(br.readLine());
+    	for(int j=0; j<repeat; j++) {
+    		int n = Integer.parseInt(br.readLine());
+            
+            long[] dp = new long[101];
+            
+            dp[1] = dp[2] = dp[3] = 1;
+            dp[4] = dp[5] = 2;
+            for(int i=6; i<=n; i++) {
+            	dp[i] = dp[i-1] + dp[i-5];
+            }
+            
+            sb.append(dp[n]).append("\n");
+    	}
+        System.out.println(sb);
+    }
+    
 }
