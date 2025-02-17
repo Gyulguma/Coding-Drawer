@@ -1,54 +1,36 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class Main {
-
-	static int N ;
-	static Integer[][] arr;
-	static Integer[][] dp;
+	private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	
-	
-	public static void main(String[] args) throws IOException {
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		N = Integer.parseInt(br.readLine());;
-		
-		arr = new Integer[N][N];
-		dp = new Integer[N][N];
-		
-		for(int i = 0 ; i < N ; i++) {
-			StringTokenizer st = new StringTokenizer(br.readLine());
-			for(int j = 0 ; j <= i ;j++) {
-				arr[i][j]=Integer.parseInt(st.nextToken());
-			}
-		}
-		
-		dp[0][0] = arr[0][0];
-		
-		for(int i = 0 ; i < N ; i++)
-		max(N-1,i);
-		
-		int max_value = 0;
-		for(int i = 0 ; i < N ;i++)
-			max_value = Math.max(max_value, dp[N-1][i]);
-		
-		System.out.println(max_value);
-}
-	public static int max(int row, int col) {
-		
-		if(dp[row][col] == null) {
-			if(col==0) {
-				dp[row][col] = max(row-1,col) + arr[row][col];
-			}
-			else if(row==col) {
-				dp[row][col] = max(row-1,col-1) + arr[row][col];
-			}	
-			else
-				dp[row][col] = Math.max(max(row-1,col), max(row-1,col-1)) + arr[row][col];
-		}
-		
-		return dp[row][col];
-	}
+    public static void main(String[] args) throws IOException {
+    	int n = Integer.parseInt(br.readLine());
+    	int[][] numbers = new int[n][];
+    	
+    	for(int i=1; i<=n; i++) {
+    		StringTokenizer st = new StringTokenizer(br.readLine());
+    		numbers[i-1] = new int[i];
+    		for(int j=0; j<i; j++) {
+    			numbers[i-1][j] = Integer.parseInt(st.nextToken());
+    		}
+    	}
+    	
+    	int[][] dp = new int[n][n];
+    	dp[0][0] = numbers[0][0];
+    	for(int i=0; i<n-1; i++) {
+    		for(int j=0; j<numbers[i].length; j++) {
+    			dp[i+1][j] = Math.max(dp[i+1][j], dp[i][j]+numbers[i+1][j]);
+    			dp[i+1][j+1] = Math.max(dp[i+1][j+1], dp[i][j]+numbers[i+1][j+1]);
+    		}
+    	}
+    	
+    	
+    	int max = 0;
+    	for(int i=0; i<numbers[n-1].length; i++) {
+    		max = Math.max(max, dp[n-1][i]);
+    	}
+    	System.out.println(max);
+    }
+    
 }
