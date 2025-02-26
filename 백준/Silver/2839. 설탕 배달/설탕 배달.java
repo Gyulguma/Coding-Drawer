@@ -1,34 +1,20 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class Main {
+	private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
-		System.out.println(leastCount(n));
-	}
-
-	private static int leastCount(int n) {
-		if(n%5 == 0) {
-			return n/5;
-		}else {
-			int min = -1;
-			for(int i=0; i*5 <= n;i++) {
-				if((n-(i*5))%3 == 0) {
-					if(min == -1) {
-						min = i+(n-(i*5))/3;
-					}else {
-						min = Math.min(min, i+(n-(i*5))/3);	
-					}
-				}
-			}
-			return min;
+		
+		int min = Integer.MAX_VALUE;
+		for(int i=n/5; i>=0; i--) {
+			int left = n-(5*i);
+			if(left%3 != 0) continue;
+			min = Math.min(min, i+left/3);
 		}
 		
+		if(min == Integer.MAX_VALUE) System.out.println(-1);
+		else System.out.println(min);
 	}
-
-
 }
