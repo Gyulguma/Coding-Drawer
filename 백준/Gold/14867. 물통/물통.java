@@ -12,12 +12,13 @@ public class Main {
         int aGoal = Integer.parseInt(st.nextToken());
         int bGoal = Integer.parseInt(st.nextToken());
         
-        boolean[][] visited = new boolean[aSize+1][bSize+1];
-        PriorityQueue<int[]> pq = new PriorityQueue<>((o1, o2) -> Integer.compare(o1[2], o2[2]));
-        pq.offer(new int[] {0,0,0});
+        Set<String> set = new HashSet<>();
+        Queue<int[]> q = new LinkedList<>();
+        q.offer(new int[] {0,0,0});
+        set.add("0,0");
         
-        while(!pq.isEmpty()) {
-        	int[] info = pq.poll();
+        while(!q.isEmpty()) {
+        	int[] info = q.poll();
         	int a = info[0];
         	int b = info[1];
         	int count = info[2];
@@ -26,36 +27,57 @@ public class Main {
         		System.out.println(count);
         		return;
         	}
-
-        	if(visited[a][b]) continue;
-        	visited[a][b] = true;
         	
-        	pq.offer(new int[] {aSize, b, count+1});
-        	pq.offer(new int[] {a, bSize, count+1});
-        	pq.offer(new int[] {0, b, count+1});
-        	pq.offer(new int[] {a, 0, count+1});
+        	if(!set.contains(aSize+","+b) && a < aSize) {
+        		q.offer(new int[] {aSize, b, count+1});
+        		set.add(aSize+","+b);
+        	}
+        	if(!set.contains(a+","+bSize) && b < bSize) {
+        		q.offer(new int[] {a, bSize, count+1});
+        		set.add(a+","+bSize);
+        	}
         	
         	int newA = 0;
         	int newB = 0;
-        	if(a <= bSize-b) {
-        		newA = 0;
-        		newB = b+a;
-        	}else {
-        		newA = a - (bSize-b);
-        		newB = bSize;
+        	if(a > 0) {
+        		if(!set.contains("0,"+b)) {
+        			q.offer(new int[] {0, b, count+1});
+        			set.add("0,"+b);
+        		}
+        		
+        		if(a <= bSize-b) {
+        			newA = 0;
+        			newB = b+a;
+        		}else {
+        			newA = a - (bSize-b);
+        			newB = bSize;
+        		}
+        		if(!set.contains(newA+","+newB)) {
+        			q.offer(new int[] {newA, newB, count+1});
+        			set.add(newA+","+newB);
+        		}
         	}
-        	pq.offer(new int[] {newA, newB, count+1});
         	
         	newA = 0;
         	newB = 0;
-        	if(b <= aSize-a) {
-        		newB = 0;
-        		newA = b+a;
-        	}else {
-        		newB = b - (aSize-a);
-        		newA = aSize;
+        	if(b > 0) {
+        		if(!set.contains(a+",0")) {
+        			q.offer(new int[] {a, 0, count+1});
+        			set.add(a+",0");
+        		}
+        		
+        		if(b <= aSize-a) {
+        			newB = 0;
+        			newA = b+a;
+        		}else {
+        			newB = b - (aSize-a);
+        			newA = aSize;
+        		}
+        		if(!set.contains(newA+","+newB)) {
+        			q.offer(new int[] {newA, newB, count+1});
+        			set.add(newA+","+newB);
+        		}
         	}
-        	pq.offer(new int[] {newA, newB, count+1});
         	
         }
         
