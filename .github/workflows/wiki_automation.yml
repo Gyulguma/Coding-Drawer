@@ -20,6 +20,11 @@ jobs:
       - name: Get newly added README.md files
         id: get_files
         run: |
+          echo "=== All changed files ==="
+          git diff --name-only HEAD~1 HEAD
+          echo "=== Newly added files (filter=A) ==="
+          git diff --name-only --diff-filter=A HEAD~1 HEAD
+          echo "=== Filtered README.md files ==="
           FILES=$(git diff --name-only --diff-filter=A HEAD~1 HEAD | grep -E "^(백준|프로그래머스)/.*/README.md$" || true)
           echo "Found new files: $FILES"
           echo "files=$FILES" >> $GITHUB_OUTPUT
