@@ -3,6 +3,7 @@ name: Auto-generate Wiki Page for AC/PS
 on:
   push:
     branches: [ main ] # main 브랜치에 푸시될 때만 실행
+  workflow_dispatch: # 수동 실행 가능
 
 jobs:
   build-wiki:
@@ -48,18 +49,27 @@ jobs:
 
             # 4-2. README.md 첫 줄 읽어서 정보 파싱 (예: "[Gold III] ACM Craft - 1005")
             TITLE_LINE=$(head -n 1 "$FILE_PATH" | sed 's/^# //') # Markdown의 '# ' 제거
+            echo "Title line: $TITLE_LINE"
             
+            # 난이도 추출 (대괄호 포함)
             DIFFICULTY=$(echo "$TITLE_LINE" | grep -o '\[.*\]' | head -n 1) # "[Gold III]" or "[level 2]"
-            PROBLEM_NUM=$(echo "$TITLE_LINE" | grep -oE '\- [0-9]+$' | sed 's/- //') # "1005" or "118667"
-            # 제목에서 난이도와 문제번호를 제외하여 순수 문제 제목만 추출
-            PROBLEM_NAME=$(echo "$TITLE_LINE" | sed -e "s/^${DIFFICULTY} //" -e "s/ - ${PROBLEM_NUM}$//") # "ACM Craft"
+            # 대괄호 제거한 난이도
+            DIFFICULTY_CLEAN=$(echo "$DIFFICULTY" | sed 's/\[//g' | sed 's/\]//g')
+            echo "Difficulty: $DIFFICULTY_CLEAN"
+            
+            # 문제 번호 추출 (줄 끝의 "- 숫자" 패턴)
+            PROBLEM_NUM=$(echo "$TITLE_LINE" | grep -oE '[0-9]+$') # "1005" or "118667"
+            echo "Problem number: $PROBLEM_NUM"
+            
+            # 순수 문제 제목 추출 (난이도와 번호 제거)
+            PROBLEM_NAME=$(echo "$TITLE_LINE" | sed -e "s/^${DIFFICULTY} //" -e "s/ - ${PROBLEM_NUM}$//")
 
             # 4-3. 플랫폼에 맞춰 문제 링크 생성
             PROBLEM_LINK=""
             if [ "$PLATFORM" == "백준" ]; then
-              PROBLEM_LINK="https://www.acmicpc.net/problem/${PROBLEM_NUM}"
+              PROBLEM_LINK="https://www.acmicpc.net/problem/$PROBLEM_NUM"
             elif [ "$PLATFORM" == "프로그래머스" ]; then
-              PROBLEM_LINK="https://school.programmers.co.kr/learn/courses/30/lessons/${PROBLEM_NUM}"
+              PROBLEM_LINK="https://school.programmers.co.kr/learn/courses/30/lessons/$PROBLEM_NUM"
             fi
 
             # 4-4. 같은 폴더에 있는 솔루션 파일(.java, .py 등) 찾기
@@ -72,9 +82,9 @@ jobs:
             SOLUTION_LINK="https://github.com/${{ github.repository }}/blob/main/${ENCODED_DIR_PATH}/${ENCODED_FILE_NAME}"
 
             # 4-5. Wiki 페이지 제목 및 파일 이름 설정
-            WIKI_PAGE_TITLE="[$PLATFORM] $DIFFICULTY $PROBLEM_NUM. $PROBLEM_NAME"
-            # Wiki 파일명은 링크로 쓰기 좋게 특수문자 제거, 공백은 하이픈(-)으로 (예: 백준-Gold-III-1005.-ACM-Craft.md)
-            WIKI_FILE_NAME=$(echo "$WIKI_PAGE_TITLE" | sed -e 's/\[//g' -e 's/\]//g' -e 's/ /-/g' -e 's/\.--/./g' -e 's/:-/./g').md
+            WIKI_PAGE_TITLE="[$PLATFORM] $DIFFICULTY_CLEAN. $PROBLEM_NAME"
+            # Wiki 파일명: "백준-Bronze-V-.-고려대는-사랑입니다.md"
+            WIKI_FILE_NAME=$(echo "$WIKI_PAGE_TITLE" | sed -e 's/\[//g' -e 's/\]//g' -e 's/ /-/g').md
             WIKI_FILE_PATH="./wiki/$WIKI_FILE_NAME"
 
             echo "Creating Wiki Page: $WIKI_PAGE_TITLE"
@@ -87,9 +97,9 @@ jobs:
               echo ""
               echo "### 2. 난이도"
               echo "- 유형: (여기를 수정하세요)"
-              echo "- 풀이법: []15분 이내  []15분 이상"
-              echo "- 구현: []30분 이내  []30분 이상"
-              echo "- 총평: []Easy  []Normal  []Hard  []Hell"
+              echo "- 풀이법: [ ]15분 이내  [ ]15분 이상"
+              echo "- 구현: [ ]30분 이내  [ ]30분 이상"
+              echo "- 총평: [ ]Easy  [ ]Normal  [ ]Hard  [ ]Hell"  
               echo ""
               echo "### 3. 접근 방법"
               echo "- (여기를 수정하세요)"
