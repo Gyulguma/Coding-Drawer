@@ -30,9 +30,9 @@ jobs:
         if: steps.get_files.outputs.files != ''
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.repository }}/wiki # "Gyulguma/Coding-Drawer/wiki"
+          repository: ${{ github.repository }}.wiki # "Gyulguma/Coding-Drawer.wiki"
           path: wiki # 'wiki' 라는 폴더에 받음
-          token: ${{ secrets.GITHUB_TOKEN }} # 인증을 위한 기본 토큰
+          token: ${{ secrets.WIKI_TOKEN }} # Wiki 접근을 위한 PAT
 
       # 4. 새 README.md 파일을 하나씩 읽어 Wiki 페이지를 생성하고 커밋합니다.
       - name: Generate and Commit to Wiki
