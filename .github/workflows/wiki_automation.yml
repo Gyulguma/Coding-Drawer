@@ -10,14 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # 1. 메인 리포지토리(Coding-Drawer)를 체크아웃합니다.
-      #    (fetch-depth: 2 는 최근 2개 커밋을 비교하기 위함)
       - name: Checkout Main Repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
       # 2. 이번 푸시에서 새로 추가된(A) 'README.md' 파일 목록을 찾습니다.
-      #    (백준 또는 프로그래머스 폴더 안의 README.md만 해당)
       - name: Get newly added README.md files
         id: get_files
         run: |
@@ -31,9 +29,9 @@ jobs:
         if: steps.get_files.outputs.files != ''
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.repository }}.wiki # "Gyulguma/Coding-Drawer.wiki"
-          path: wiki # 'wiki' 라는 폴더에 받음
-          token: ${{ secrets.WIKI_TOKEN }} # Wiki 접근을 위한 PAT
+          repository: ${{ github.repository }}.wiki
+          path: wiki
+          token: ${{ secrets.WIKI_TOKEN }}
 
       # 4. 새 README.md 파일을 하나씩 읽어 Wiki 페이지를 생성하고 커밋합니다.
       - name: Generate and Commit to Wiki
@@ -44,25 +42,27 @@ jobs:
             echo "--- Processing: $FILE_PATH ---"
 
             # 4-1. 기본 정보 설정
-            PLATFORM=$(echo "$FILE_PATH" | cut -d'/' -f1) # "백준" or "프로그래머스"
-            DIR_PATH=$(dirname "$FILE_PATH")             # "백준/Gold/1005. ACM Craft"
+            PLATFORM=$(echo "$FILE_PATH" | cut -d'/' -f1)
+            DIR_PATH=$(dirname "$FILE_PATH")
 
-            # 4-2. README.md 첫 줄 읽어서 정보 파싱 (예: "[Gold III] ACM Craft - 1005")
-            TITLE_LINE=$(head -n 1 "$FILE_PATH" | sed 's/^# //') # Markdown의 '# ' 제거
+            # 4-2. README.md 첫 줄 읽어서 정보 파싱
+            TITLE_LINE=$(head -n 1 "$FILE_PATH" | sed 's/^# //')
             echo "Title line: $TITLE_LINE"
             
             # 난이도 추출 (대괄호 포함)
-            DIFFICULTY=$(echo "$TITLE_LINE" | grep -o '\[.*\]' | head -n 1) # "[Gold III]" or "[level 2]"
-            # 대괄호 제거한 난이도
+            DIFFICULTY=$(echo "$TITLE_LINE" | grep -o '\[.*\]' | head -n 1)
+            # 대괄호 제거한 난이도 (파일 제목용)
             DIFFICULTY_CLEAN=$(echo "$DIFFICULTY" | sed 's/\[//g' | sed 's/\]//g')
             echo "Difficulty: $DIFFICULTY_CLEAN"
             
             # 문제 번호 추출 (줄 끝의 "- 숫자" 패턴)
-            PROBLEM_NUM=$(echo "$TITLE_LINE" | grep -oE '[0-9]+' | tail -n 1) # "1005" or "118667"
+            PROBLEM_NUM=$(echo "$TITLE_LINE" | grep -oE '[0-9]+' | tail -n 1)
             echo "Problem number: $PROBLEM_NUM"
             
-            # 순수 문제 제목 추출 (난이도와 번호 제거)
-            PROBLEM_NAME=$(echo "$TITLE_LINE" | sed -e "s/^${DIFFICULTY} //" -e "s/ - ${PROBLEM_NUM}$//")
+            # [수정됨] 순수 문제 제목 추출
+            # 정규식을 사용하여 맨 앞의 대괄호 덩어리와 맨 뒤의 번호 덩어리를 제거
+            PROBLEM_NAME=$(echo "$TITLE_LINE" | sed -E 's/^\[.*\] //' | sed -E "s/ - ${PROBLEM_NUM}$//")
+            echo "Problem name: $PROBLEM_NAME"
 
             # 4-3. 플랫폼에 맞춰 문제 링크 생성
             PROBLEM_LINK=""
@@ -72,23 +72,19 @@ jobs:
               PROBLEM_LINK="https://school.programmers.co.kr/learn/courses/30/lessons/$PROBLEM_NUM"
             fi
 
-            # 4-4. 같은 폴더에 있는 솔루션 파일(.java, .py 등) 찾기
-            # (여러 언어로 풀 경우 첫 번째 파일만 선택됨)
+            # 4-4. 같은 폴더에 있는 솔루션 파일 찾기
             SOLUTION_FILE_NAME=$(find "$DIR_PATH" -maxdepth 1 \( -name "*.java" -o -name "*.py" -o -name "*.cpp" -o -name "*.js" \) -exec basename {} \; | head -n 1)
             
-            # URL에 공백이 포함될 수 있으므로 %20으로 인코딩
             ENCODED_DIR_PATH=$(echo "$DIR_PATH" | sed 's/ /%20/g')
             ENCODED_FILE_NAME=$(echo "$SOLUTION_FILE_NAME" | sed 's/ /%20/g')
             SOLUTION_LINK="https://github.com/${{ github.repository }}/blob/main/${ENCODED_DIR_PATH}/${ENCODED_FILE_NAME}"
 
             # 4-5. Wiki 페이지 제목 및 파일 이름 설정
             WIKI_PAGE_TITLE="[$PLATFORM] $DIFFICULTY_CLEAN. $PROBLEM_NAME"
-            # Wiki 파일명: "백준-Bronze-V-.-고려대는-사랑입니다.md"
             WIKI_FILE_NAME=$(echo "$WIKI_PAGE_TITLE" | sed -e 's/\[//g' -e 's/\]//g' -e 's/ /-/g').md
             WIKI_FILE_PATH="./wiki/$WIKI_FILE_NAME"
 
             echo "Creating Wiki Page: $WIKI_PAGE_TITLE"
-            echo "File Path: $WIKI_FILE_PATH"
 
             # 4-6. 템플릿을 사용하여 Wiki 페이지 파일 생성
             {
@@ -101,7 +97,11 @@ jobs:
               echo "- 구현: [ ] 30분 이내  [ ] 30분 이상"
               echo "- 총평: [ ] Easy  [ ] Normal  [ ] Hard  [ ] Hell"  
               echo ""
-              echo "### 3. 접근 방법"
+              echo "### 3. 문제 설명"
+              echo "- (여기를 수정하세요)"
+              echo ""
+              echo "### 4. 접근 방법"
+              echo "- 사용 알고리즘: (여기를 수정하세요. ex. \`DFS\`)"
               echo "- (여기를 수정하세요)"
               echo ""
               echo "### 4. 배운 점 / 느낀 점"
@@ -120,7 +120,6 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "Wiki Bot"
           git add .
-          # 변경 사항이 있을 때만 커밋 (중복 실행 방지)
           if ! git diff-index --quiet HEAD; then
             git commit -m "Auto-generate wiki page(s) for new solution(s) [skip ci]"
             git push
