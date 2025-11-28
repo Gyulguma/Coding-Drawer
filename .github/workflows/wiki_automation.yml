@@ -8,6 +8,10 @@ on:
 jobs:
   build-wiki:
     runs-on: ubuntu-latest
+    # 리드미(main repo)에 쓰기 권한을 주기 위해 permissions 설정 추가
+    permissions:
+      contents: write
+
     steps:
       # 1. 메인 리포지토리(Coding-Drawer)를 체크아웃합니다.
       - name: Checkout Main Repo
@@ -37,6 +41,9 @@ jobs:
       - name: Generate and Commit to Wiki
         if: steps.get_files.outputs.files != ''
         run: |
+          # 로그를 저장할 임시 파일 생성
+          touch wiki_log.txt
+
           while IFS= read -r FILE_PATH; do
             [ -z "$FILE_PATH" ] && continue
             echo "--- Processing: $FILE_PATH ---"
@@ -47,22 +54,16 @@ jobs:
 
             # 4-2. README.md 첫 줄 읽어서 정보 파싱
             TITLE_LINE=$(head -n 1 "$FILE_PATH" | sed 's/^# //')
-            echo "Title line: $TITLE_LINE"
             
-            # 난이도 추출 (대괄호 포함)
+            # 난이도 추출 및 정제
             DIFFICULTY=$(echo "$TITLE_LINE" | grep -o '\[.*\]' | head -n 1)
-            # 대괄호 제거한 난이도 (파일 제목용)
             DIFFICULTY_CLEAN=$(echo "$DIFFICULTY" | sed 's/\[//g' | sed 's/\]//g')
-            echo "Difficulty: $DIFFICULTY_CLEAN"
             
-            # 문제 번호 추출 (줄 끝의 "- 숫자" 패턴)
+            # 문제 번호 추출
             PROBLEM_NUM=$(echo "$TITLE_LINE" | grep -oE '[0-9]+' | tail -n 1)
-            echo "Problem number: $PROBLEM_NUM"
             
-            # [수정됨] 순수 문제 제목 추출
-            # 정규식을 사용하여 맨 앞의 대괄호 덩어리와 맨 뒤의 번호 덩어리를 제거
+            # 문제 제목 추출 (정규식 수정됨)
             PROBLEM_NAME=$(echo "$TITLE_LINE" | sed -E 's/^\[.*\] //' | sed -E "s/ - ${PROBLEM_NUM}$//")
-            echo "Problem name: $PROBLEM_NAME"
 
             # 4-3. 플랫폼에 맞춰 문제 링크 생성
             PROBLEM_LINK=""
@@ -72,9 +73,8 @@ jobs:
               PROBLEM_LINK="https://school.programmers.co.kr/learn/courses/30/lessons/$PROBLEM_NUM"
             fi
 
-            # 4-4. 같은 폴더에 있는 솔루션 파일 찾기
+            # 4-4. 솔루션 파일 링크 생성
             SOLUTION_FILE_NAME=$(find "$DIR_PATH" -maxdepth 1 \( -name "*.java" -o -name "*.py" -o -name "*.cpp" -o -name "*.js" \) -exec basename {} \; | head -n 1)
-            
             ENCODED_DIR_PATH=$(echo "$DIR_PATH" | sed 's/ /%20/g')
             ENCODED_FILE_NAME=$(echo "$SOLUTION_FILE_NAME" | sed 's/ /%20/g')
             SOLUTION_LINK="https://github.com/${{ github.repository }}/blob/main/${ENCODED_DIR_PATH}/${ENCODED_FILE_NAME}"
@@ -83,17 +83,21 @@ jobs:
             WIKI_PAGE_TITLE="[$PLATFORM] $DIFFICULTY_CLEAN. $PROBLEM_NAME"
             WIKI_FILE_NAME=$(echo "$WIKI_PAGE_TITLE" | sed -e 's/\[//g' -e 's/\]//g' -e 's/ /-/g').md
             WIKI_FILE_PATH="./wiki/$WIKI_FILE_NAME"
+            
+            # 위키 URL 생성 (.md 제거)
+            WIKI_URL_SLUG=$(echo "$WIKI_FILE_NAME" | sed 's/.md$//')
+            WIKI_FULL_URL="https://github.com/${{ github.repository }}/wiki/$WIKI_URL_SLUG"
 
             echo "Creating Wiki Page: $WIKI_PAGE_TITLE"
 
-            # 4-6. 템플릿을 사용하여 Wiki 페이지 파일 생성
+            # 4-6. Wiki 페이지 파일 생성
             {
               echo "### 1. 풀이 시간"
               echo "- (여기를 수정하세요)"
               echo ""
               echo "### 2. 난이도"
               echo "- 유형: (여기를 수정하세요)"
-              echo "- 풀이법: ✅ 15분 이내  ⬜15분 이상"
+              echo "- 풀이법: ✅ 15분 이내  ⬜ 15분 이상"
               echo "- 구현: ⬜ 30분 이내  ⬜ 30분 이상"
               echo "- 총평: ⬜ Easy  ⬜ Normal  ⬜ Hard  ⬜ Hell"  
               echo ""
@@ -104,7 +108,7 @@ jobs:
               echo "- 사용 알고리즘: (여기를 수정하세요. ex. \`DFS\`)"
               echo "- (여기를 수정하세요)"
               echo ""
-              echo "### 4. 배운 점 / 느낀 점"
+              echo "### 5. 배운 점 / 느낀 점"
               echo "- (여기를 수정하세요)"
               echo ""
               echo "<br>"
@@ -112,6 +116,12 @@ jobs:
               echo "> [문제 링크]($PROBLEM_LINK) <br>"
               echo "> [My Solution Code]($SOLUTION_LINK)"
             } > "$WIKI_FILE_PATH"
+
+            # 리드미 업데이트를 위한 로그 기록 (임시 파일에 저장)
+            TODAY=$(date '+%Y-%m-%d')
+            echo "- $TODAY" >> wiki_log.txt
+            echo "  - [$WIKI_PAGE_TITLE]($WIKI_FULL_URL)" >> wiki_log.txt
+
           done <<< "${{ steps.get_files.outputs.files }}"
 
       # 5. 생성된 Wiki 페이지들을 Wiki 리포지토리에 푸시
@@ -127,4 +137,27 @@ jobs:
             git push
           else
             echo "No new wiki pages to commit."
+          fi
+
+      # 6. 메인 리포지토리의 README.md 업데이트
+      - name: Update Main README
+        if: steps.get_files.outputs.files != ''
+        run: |
+          # 임시 로그 파일이 존재하고 비어있지 않은지 확인
+          if [ -s wiki_log.txt ]; then
+            echo "Updating README.md with new wiki links..."
+            
+            # README.md 끝에 로그 내용 추가 (개행 추가)
+            echo "" >> README.md
+            cat wiki_log.txt >> README.md
+            
+            # 메인 리포지토리에 커밋 및 푸시
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git config --global user.name "Wiki Bot"
+            
+            git add README.md
+            git commit -m "Docs: Update README with new Wiki links [skip ci]"
+            git push
+          else
+            echo "No logs to update."
           fi
