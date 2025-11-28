@@ -1,25 +1,24 @@
-name: Auto-generate Wiki Page for AC/PS
+name: 백준/프로그래머스 문제 풀이 위키 자동 배포
 
 on:
   push:
-    branches: [ main ] # main 브랜치에 푸시될 때만 실행
-  workflow_dispatch: # 수동 실행 가능
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build-wiki:
     runs-on: ubuntu-latest
-    # 리드미(main repo)에 쓰기 권한을 주기 위해 permissions 설정 추가
     permissions:
       contents: write
 
     steps:
-      # 1. 메인 리포지토리(Coding-Drawer)를 체크아웃합니다.
+      # 1. 메인 리포지토리 체크아웃
       - name: Checkout Main Repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
-      # 2. 이번 푸시에서 새로 추가된(A) 'README.md' 파일 목록을 찾습니다.
+      # 2. 새 README.md 파일 찾기
       - name: Get newly added README.md files
         id: get_files
         run: |
@@ -28,7 +27,7 @@ jobs:
           echo "Found new files: $FILES"
           echo "files=$FILES" >> $GITHUB_OUTPUT
 
-      # 3. 새 파일이 있을 경우에만 Wiki 리포지토리(Coding-Drawer.wiki)를 체크아웃합니다.
+      # 3. Wiki 리포지토리 체크아웃
       - name: Checkout Wiki Repo
         if: steps.get_files.outputs.files != ''
         uses: actions/checkout@v4
@@ -37,11 +36,11 @@ jobs:
           path: wiki
           token: ${{ secrets.WIKI_TOKEN }}
 
-      # 4. 새 README.md 파일을 하나씩 읽어 Wiki 페이지를 생성하고 커밋합니다.
+      # 4. Wiki 페이지 생성 및 커밋
       - name: Generate and Commit to Wiki
         if: steps.get_files.outputs.files != ''
         run: |
-          # 로그를 저장할 임시 파일 생성
+          # 로그를 저장할 임시 파일 생성 (여기서는 날짜 없이 내용만 담음)
           touch wiki_log.txt
 
           while IFS= read -r FILE_PATH; do
@@ -52,20 +51,16 @@ jobs:
             PLATFORM=$(echo "$FILE_PATH" | cut -d'/' -f1)
             DIR_PATH=$(dirname "$FILE_PATH")
 
-            # 4-2. README.md 첫 줄 읽어서 정보 파싱
+            # 4-2. README.md 파싱
             TITLE_LINE=$(head -n 1 "$FILE_PATH" | sed 's/^# //')
             
-            # 난이도 추출 및 정제
             DIFFICULTY=$(echo "$TITLE_LINE" | grep -o '\[.*\]' | head -n 1)
             DIFFICULTY_CLEAN=$(echo "$DIFFICULTY" | sed 's/\[//g' | sed 's/\]//g')
             
-            # 문제 번호 추출
             PROBLEM_NUM=$(echo "$TITLE_LINE" | grep -oE '[0-9]+' | tail -n 1)
-            
-            # 문제 제목 추출 (정규식 수정됨)
             PROBLEM_NAME=$(echo "$TITLE_LINE" | sed -E 's/^\[.*\] //' | sed -E "s/ - ${PROBLEM_NUM}$//")
 
-            # 4-3. 플랫폼에 맞춰 문제 링크 생성
+            # 4-3. 문제 링크 생성
             PROBLEM_LINK=""
             if [ "$PLATFORM" == "백준" ]; then
               PROBLEM_LINK="https://www.acmicpc.net/problem/$PROBLEM_NUM"
@@ -79,16 +74,12 @@ jobs:
             ENCODED_FILE_NAME=$(echo "$SOLUTION_FILE_NAME" | sed 's/ /%20/g')
             SOLUTION_LINK="https://github.com/${{ github.repository }}/blob/main/${ENCODED_DIR_PATH}/${ENCODED_FILE_NAME}"
 
-            # 4-5. Wiki 페이지 제목 및 파일 이름 설정
+            # 4-5. Wiki 설정
             WIKI_PAGE_TITLE="[$PLATFORM] $DIFFICULTY_CLEAN. $PROBLEM_NAME"
             WIKI_FILE_NAME=$(echo "$WIKI_PAGE_TITLE" | sed -e 's/\[//g' -e 's/\]//g' -e 's/ /-/g').md
             WIKI_FILE_PATH="./wiki/$WIKI_FILE_NAME"
-            
-            # 위키 URL 생성 (.md 제거)
             WIKI_URL_SLUG=$(echo "$WIKI_FILE_NAME" | sed 's/.md$//')
             WIKI_FULL_URL="https://github.com/${{ github.repository }}/wiki/$WIKI_URL_SLUG"
-
-            echo "Creating Wiki Page: $WIKI_PAGE_TITLE"
 
             # 4-6. Wiki 페이지 파일 생성
             {
@@ -117,14 +108,12 @@ jobs:
               echo "> [My Solution Code]($SOLUTION_LINK)"
             } > "$WIKI_FILE_PATH"
 
-            # 리드미 업데이트를 위한 로그 기록 (임시 파일에 저장)
-            TODAY=$(date '+%Y-%m-%d')
-            echo "- $TODAY" >> wiki_log.txt
+            # '들여쓰기 된 링크'만 로그 파일에 저장
             echo "  - [$WIKI_PAGE_TITLE]($WIKI_FULL_URL)" >> wiki_log.txt
 
           done <<< "${{ steps.get_files.outputs.files }}"
 
-      # 5. 생성된 Wiki 페이지들을 Wiki 리포지토리에 푸시
+      # 5. Wiki 푸시
       - name: Push changes to Wiki
         if: steps.get_files.outputs.files != ''
         run: |
@@ -139,25 +128,34 @@ jobs:
             echo "No new wiki pages to commit."
           fi
 
-      # 6. 메인 리포지토리의 README.md 업데이트
+      # 6. 메인 리포지토리의 README.md 업데이트 (날짜 포맷: YYYY.MM.DD)
       - name: Update Main README
         if: steps.get_files.outputs.files != ''
         run: |
-          # 임시 로그 파일이 존재하고 비어있지 않은지 확인
           if [ -s wiki_log.txt ]; then
-            echo "Updating README.md with new wiki links..."
+            # 날짜 형식을 2025.11.28 형태로 변경
+            TODAY=$(date '+%Y.%m.%d')
             
-            # README.md 끝에 로그 내용 추가 (개행 추가)
-            echo "" >> README.md
-            cat wiki_log.txt >> README.md
+            # 검색 패턴: - **2025.11.28** (특수문자 이스케이프 주의)
+            # grep이 대괄호나 별표를 문자로 인식하게 하기 위해 변수에 담을 때 주의하거나 단순 문자열 매칭 사용
             
-            # 메인 리포지토리에 커밋 및 푸시
+            echo "Checking if date entry '- **$TODAY**' exists in README..."
+            
+            # README.md에 오늘 날짜 불릿이 있는지 확인 (Fixed String 검색 -F 옵션 사용)
+            if grep -Fq "- **$TODAY**" README.md; then
+              echo "Date header exists. Appending only links."
+              cat wiki_log.txt >> README.md
+            else
+              echo "Date header does not exist. Creating header and appending links."
+              echo "" >> README.md
+              echo "- **$TODAY**" >> README.md
+              cat wiki_log.txt >> README.md
+            fi
+            
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
             git config --global user.name "Wiki Bot"
             
             git add README.md
             git commit -m "Docs: Update README with new Wiki links [skip ci]"
             git push
-          else
-            echo "No logs to update."
           fi
