@@ -1,8 +1,6 @@
 import java.util.*;
 import java.io.*;
 
-// 내 생각 = 우선순위 큐, 이분탐색
-// 정답 풀이 = 정렬, 우선순위 큐
 public class Main{
 	
     public static void main(String[] args) throws Exception {
