@@ -7,3 +7,6 @@
 
 - **2025.11.28**
   - [백준 Gold IV. 도시 분할 계획 1647](https://github.com/Gyulguma/Coding-Drawer/wiki/%EB%B0%B1%EC%A4%80-Gold-IV.-%EB%8F%84%EC%8B%9C-%EB%B6%84%ED%95%A0-%EA%B3%84%ED%9A%8D---1647)
+
+- **2025.11.29**
+  - [[백준] Gold IV. 부분합 - 1806 ](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-IV.-부분합---1806-)
