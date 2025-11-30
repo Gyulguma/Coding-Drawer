@@ -10,3 +10,6 @@
 
 - **2025.11.29**
   - [[백준] Gold IV. 부분합 - 1806 ](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-IV.-부분합---1806-)
+
+- **2025.11.30**
+  - [[백준] Gold II. 문제집 - 1766 ](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-II.-문제집---1766-)
