@@ -17,7 +17,7 @@ public class Main{
     }
     
     private static long pow(int base, int exp, int mod) {
-    	if(exp == 0) return 1;
+    	if(exp == 1) return base % mod;
     	
     	long temp = pow(base, exp/2, mod);
     	
