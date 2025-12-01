@@ -9,13 +9,10 @@
   - [백준 Gold IV. 도시 분할 계획 1647](https://github.com/Gyulguma/Coding-Drawer/wiki/%EB%B0%B1%EC%A4%80-Gold-IV.-%EB%8F%84%EC%8B%9C-%EB%B6%84%ED%95%A0-%EA%B3%84%ED%9A%8D---1647)
 
 - **2025.11.29**
-  - [[백준] Gold IV. 부분합 - 1806 ](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-IV.-부분합---1806-)
+  - [[백준] Gold IV. 부분합 - 1806 ](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-IV.-부분합---1806)
 
 - **2025.11.30**
-  - [[백준] Gold II. 문제집 - 1766 ](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-II.-문제집---1766-)
+  - [[백준] Gold II. 문제집 - 1766 ](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-II.-문제집---1766)
 
 - **2025.12.01**
-  - [[백준] Gold I. 이항 계수 3 - 11401 ](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-I.-이항-계수-3---11401-)
-
-- **2025.12.01**
-  - [[백준] Bronze V. 이중 반복문 - 34849 ](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Bronze-V.-이중-반복문---34849-)
+  - [[백준] Gold I. 이항 계수 3 - 11401 ](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-I.-이항-계수-3---11401)
