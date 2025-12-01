@@ -16,3 +16,6 @@
 
 - **2025.12.01**
   - [[백준] Gold I. 이항 계수 3 - 11401 ](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-I.-이항-계수-3---11401-)
+
+- **2025.12.01**
+  - [[백준] Bronze V. 이중 반복문 - 34849 ](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Bronze-V.-이중-반복문---34849-)
