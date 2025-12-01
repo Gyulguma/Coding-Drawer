@@ -1,21 +1,27 @@
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int A = sc.nextInt(), B = sc.nextInt(), C = sc.nextInt();
-
-        System.out.println(pow(A, B, C));
+public class Main{
+	
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        
+        int a = Integer.parseInt(st.nextToken());
+        int b = Integer.parseInt(st.nextToken());
+        int c = Integer.parseInt(st.nextToken());
+        
+        long result = pow(a, b, c);
+        System.out.println(result);
     }
-
-    static long pow(int a, int b, int mod) {
-        if (b == 0)
-            return 1;
-
-        long n = pow(a, b / 2, mod);
-        if (b % 2 == 0)
-            return n * n % mod;
-        else
-            return (n * n % mod) * a % mod;
+    
+    private static long pow(int base, int exp, int mod) {
+    	if(exp == 0) return 1;
+    	
+    	long temp = pow(base, exp/2, mod);
+    	
+    	if(exp%2 == 0) return temp * temp % mod;
+    	return (temp * temp % mod) * base % mod;
     }
 }
