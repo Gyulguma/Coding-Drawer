@@ -1,4 +1,4 @@
-name: 백준/프로그래머스 문제 풀이 위키 자동 배포
+name: Auto-generate Wiki Page for AC/PS
 
 on:
   push:
@@ -12,13 +12,11 @@ jobs:
       contents: write
 
     steps:
-      # 1. 메인 리포지토리 체크아웃
       - name: Checkout Main Repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
-      # 2. 새 README.md 파일 찾기
       - name: Get newly added README.md files
         id: get_files
         run: |
@@ -27,7 +25,6 @@ jobs:
           echo "Found new files: $FILES"
           echo "files=$FILES" >> $GITHUB_OUTPUT
 
-      # 3. Wiki 리포지토리 체크아웃
       - name: Checkout Wiki Repo
         if: steps.get_files.outputs.files != ''
         uses: actions/checkout@v4
@@ -36,31 +33,32 @@ jobs:
           path: wiki
           token: ${{ secrets.WIKI_TOKEN }}
 
-      # 4. Wiki 페이지 생성 및 커밋
       - name: Generate and Commit to Wiki
         if: steps.get_files.outputs.files != ''
         run: |
-          # 로그를 저장할 임시 파일 생성 (여기서는 날짜 없이 내용만 담음)
           touch wiki_log.txt
 
           while IFS= read -r FILE_PATH; do
             [ -z "$FILE_PATH" ] && continue
             echo "--- Processing: $FILE_PATH ---"
 
-            # 4-1. 기본 정보 설정
             PLATFORM=$(echo "$FILE_PATH" | cut -d'/' -f1)
             DIR_PATH=$(dirname "$FILE_PATH")
 
-            # 4-2. README.md 파싱
+            # README 첫 줄 파싱
             TITLE_LINE=$(head -n 1 "$FILE_PATH" | sed 's/^# //')
             
+            # 난이도 추출
             DIFFICULTY=$(echo "$TITLE_LINE" | grep -o '\[.*\]' | head -n 1)
             DIFFICULTY_CLEAN=$(echo "$DIFFICULTY" | sed 's/\[//g' | sed 's/\]//g')
             
+            # 문제 번호 추출
             PROBLEM_NUM=$(echo "$TITLE_LINE" | grep -oE '[0-9]+' | tail -n 1)
-            PROBLEM_NAME=$(echo "$TITLE_LINE" | sed -E 's/^\[.*\] //' | sed -E "s/ - ${PROBLEM_NUM}$//")
+            
+            # [수정 1] 문제 이름 추출 시 앞뒤 공백(xargs) 제거 및 정규식 보완
+            # sed -E "s/ - ${PROBLEM_NUM}\s*$//" : 숫자 뒤에 공백이 있어도 처리하도록 \s* 추가
+            PROBLEM_NAME=$(echo "$TITLE_LINE" | sed -E 's/^\[.*\] //' | sed -E "s/ - ${PROBLEM_NUM}.*$//" | xargs)
 
-            # 4-3. 문제 링크 생성
             PROBLEM_LINK=""
             if [ "$PLATFORM" == "백준" ]; then
               PROBLEM_LINK="https://www.acmicpc.net/problem/$PROBLEM_NUM"
@@ -68,20 +66,27 @@ jobs:
               PROBLEM_LINK="https://school.programmers.co.kr/learn/courses/30/lessons/$PROBLEM_NUM"
             fi
 
-            # 4-4. 솔루션 파일 링크 생성
             SOLUTION_FILE_NAME=$(find "$DIR_PATH" -maxdepth 1 \( -name "*.java" -o -name "*.py" -o -name "*.cpp" -o -name "*.js" \) -exec basename {} \; | head -n 1)
             ENCODED_DIR_PATH=$(echo "$DIR_PATH" | sed 's/ /%20/g')
             ENCODED_FILE_NAME=$(echo "$SOLUTION_FILE_NAME" | sed 's/ /%20/g')
             SOLUTION_LINK="https://github.com/${{ github.repository }}/blob/main/${ENCODED_DIR_PATH}/${ENCODED_FILE_NAME}"
 
-            # 4-5. Wiki 설정
             WIKI_PAGE_TITLE="[$PLATFORM] $DIFFICULTY_CLEAN. $PROBLEM_NAME"
-            WIKI_FILE_NAME=$(echo "$WIKI_PAGE_TITLE" | sed -e 's/\[//g' -e 's/\]//g' -e 's/ /-/g').md
+            
+            # 1. 대괄호 제거
+            # 2. 공백을 -로 변경
+            # 3. 연속된 -(--)를 하나(-)로 변경 (squeeze)
+            # 4. 맨 앞이나 맨 뒤에 있는 - 제거
+            SAFE_FILENAME=$(echo "$WIKI_PAGE_TITLE" | sed 's/\[//g' | sed 's/\]//g' | sed 's/ /-/g' | sed 's/-\+/-/g' | sed 's/^-\|-$//g')
+            WIKI_FILE_NAME="${SAFE_FILENAME}.md"
             WIKI_FILE_PATH="./wiki/$WIKI_FILE_NAME"
-            WIKI_URL_SLUG=$(echo "$WIKI_FILE_NAME" | sed 's/.md$//')
-            WIKI_FULL_URL="https://github.com/${{ github.repository }}/wiki/$WIKI_URL_SLUG"
+            
+            # URL에는 .md가 들어가지 않음
+            WIKI_FULL_URL="https://github.com/${{ github.repository }}/wiki/$SAFE_FILENAME"
 
-            # 4-6. Wiki 페이지 파일 생성
+            echo "Creating Wiki Page: $WIKI_PAGE_TITLE"
+            echo "Safe Filename: $SAFE_FILENAME"
+
             {
               echo "### 1. 풀이 시간"
               echo "- (여기를 수정하세요)"
@@ -108,12 +113,10 @@ jobs:
               echo "> [My Solution Code]($SOLUTION_LINK)"
             } > "$WIKI_FILE_PATH"
 
-            # '들여쓰기 된 링크'만 로그 파일에 저장
             echo "  - [$WIKI_PAGE_TITLE]($WIKI_FULL_URL)" >> wiki_log.txt
 
           done <<< "${{ steps.get_files.outputs.files }}"
 
-      # 5. Wiki 푸시
       - name: Push changes to Wiki
         if: steps.get_files.outputs.files != ''
         run: |
@@ -128,27 +131,24 @@ jobs:
             echo "No new wiki pages to commit."
           fi
 
-      # 6. 메인 리포지토리의 README.md 업데이트 (날짜 포맷: YYYY.MM.DD)
       - name: Update Main README
         if: steps.get_files.outputs.files != ''
         run: |
           if [ -s wiki_log.txt ]; then
-            # 날짜 형식을 2025.11.28 형태로 변경
             TODAY=$(date '+%Y.%m.%d')
+            HEADER="- **$TODAY**"
             
-            # 검색 패턴: - **2025.11.28** (특수문자 이스케이프 주의)
-            # grep이 대괄호나 별표를 문자로 인식하게 하기 위해 변수에 담을 때 주의하거나 단순 문자열 매칭 사용
+            # grep -F: 고정 문자열 검색 (특수문자 무시)
+            # README.md가 끝에 줄바꿈이 없을 경우를 대비해 tail로 확인하지 않고 전체 검색
             
-            echo "Checking if date entry '- **$TODAY**' exists in README..."
-            
-            # README.md에 오늘 날짜 불릿이 있는지 확인 (Fixed String 검색 -F 옵션 사용)
-            if grep -Fq "- **$TODAY**" README.md; then
-              echo "Date header exists. Appending only links."
+            if grep -Fq "$HEADER" README.md; then
+              echo "Date header '$HEADER' exists. Appending links."
               cat wiki_log.txt >> README.md
             else
-              echo "Date header does not exist. Creating header and appending links."
+              echo "Date header '$HEADER' not found. Creating new block."
+              # 파일 끝에 강제로 줄바꿈 추가 (안전장치)
               echo "" >> README.md
-              echo "- **$TODAY**" >> README.md
+              echo "$HEADER" >> README.md
               cat wiki_log.txt >> README.md
             fi
             
