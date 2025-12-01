@@ -13,3 +13,6 @@
 
 - **2025.11.30**
   - [[백준] Gold II. 문제집 - 1766 ](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-II.-문제집---1766-)
+
+- **2025.12.01**
+  - [[백준] Gold I. 이항 계수 3 - 11401 ](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-I.-이항-계수-3---11401-)
