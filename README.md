@@ -16,3 +16,6 @@
 
 - **2025.12.01**
   - [[백준] Gold I. 이항 계수 3 - 11401 ](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-I.-이항-계수-3---11401)
+
+- **2025.12.03**
+  - [[백준] Gold I. K번째 수](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-I.-K번째-수)
