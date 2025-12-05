@@ -19,3 +19,6 @@
 
 - **2025.12.03**
   - [[백준] Gold I. K번째 수](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-I.-K번째-수)
+
+- **2025.12.05**
+  - [[백준] Gold II. 중앙값 구하기](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-II.-중앙값-구하기)
