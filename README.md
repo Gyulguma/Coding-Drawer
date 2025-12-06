@@ -25,3 +25,6 @@
 
 - **2025.12.06**
   - [[백준] Silver III. N번째 큰 수](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-III.-N번째-큰-수)
+
+- **2025.12.06**
+  - [[프로그래머스] level 1. 평균 일일 대여 요금 구하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-1.-평균-일일-대여-요금-구하기)
