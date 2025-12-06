@@ -22,3 +22,6 @@
 
 - **2025.12.05**
   - [[백준] Gold II. 중앙값 구하기](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-II.-중앙값-구하기)
+
+- **2025.12.06**
+  - [[백준] Silver III. N번째 큰 수](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-III.-N번째-큰-수)
