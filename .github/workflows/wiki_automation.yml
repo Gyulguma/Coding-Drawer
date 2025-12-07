@@ -135,25 +135,27 @@ jobs:
         if: steps.get_files.outputs.files != ''
         run: |
           if [ -s wiki_log.txt ]; then
-            TODAY=$(date '+%Y.%m.%d')
-            HEADER="- **$TODAY**"
-            
-            # grep -F: 고정 문자열 검색 (특수문자 무시)
-            # README.md가 끝에 줄바꿈이 없을 경우를 대비해 tail로 확인하지 않고 전체 검색
-            
-            if grep -Fq "$HEADER" README.md; then
-              echo "Date header '$HEADER' exists. Appending links."
-              cat wiki_log.txt >> README.md
-            else
-              echo "Date header '$HEADER' not found. Creating new block."
-              # 파일 끝에 강제로 줄바꿈 추가 (안전장치)
-              echo "" >> README.md
-              echo "$HEADER" >> README.md
-              cat wiki_log.txt >> README.md
-            fi
-            
+            # Git 설정 먼저 실행
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
             git config --global user.name "Wiki Bot"
+            
+            # [중요] 동기화 문제 해결: 원격 저장소의 최신 변경사항(이미 추가된 날짜 등)을 가져옴
+            git pull origin main --rebase
+            
+            TODAY=$(date '+%Y.%m.%d')
+            
+            # [중요] 검색 조건 완화: "- **날짜**" 전체가 아니라 "날짜" 텍스트만 있어도 있는 것으로 간주
+            # 이렇게 하면 공백이나 특수문자 때문에 못 찾는 경우를 방지함
+            if grep -q "$TODAY" README.md; then
+              echo "Date header exists. Appending only links."
+              cat wiki_log.txt >> README.md
+            else
+              echo "Date header does not exist. Creating header and appending links."
+              # 파일 끝에 빈 줄이 없을 수 있으므로 강제 개행
+              echo "" >> README.md
+              echo "- **$TODAY**" >> README.md
+              cat wiki_log.txt >> README.md
+            fi
             
             git add README.md
             git commit -m "Docs: Update README with new Wiki links [skip ci]"
