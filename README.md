@@ -31,3 +31,6 @@
 
 - **2025.12.07**
   - [[백준] Silver I. 나이트의 이동](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-I.-나이트의-이동)
+
+- **2025.12.07**
+  - [[프로그래머스] level 1. 조건에 부합하는 중고거래 댓글 조회하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-1.-조건에-부합하는-중고거래-댓글-조회하기)
