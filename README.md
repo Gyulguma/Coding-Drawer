@@ -28,3 +28,6 @@
 
 - **2025.12.06**
   - [[프로그래머스] level 1. 평균 일일 대여 요금 구하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-1.-평균-일일-대여-요금-구하기)
+
+- **2025.12.07**
+  - [[백준] Silver I. 나이트의 이동](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-I.-나이트의-이동)
