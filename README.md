@@ -31,3 +31,6 @@
   - [[백준] Silver I. 나이트의 이동](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-I.-나이트의-이동)
   - [[프로그래머스] level 1. 조건에 부합하는 중고거래 댓글 조회하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-1.-조건에-부합하는-중고거래-댓글-조회하기)
   - [[백준] Gold V. 토마토](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-V.-토마토)
+
+- **2025.12.08**
+  - [[백준] Gold V. 뱀과 사다리 게임](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-V.-뱀과-사다리-게임)
