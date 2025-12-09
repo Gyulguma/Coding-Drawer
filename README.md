@@ -35,3 +35,6 @@
 - **2025.12.08**
   - [[백준] Gold V. 뱀과 사다리 게임](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-V.-뱀과-사다리-게임)
   - [[프로그래머스] level 1. 인기있는 아이스크림](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-1.-인기있는-아이스크림)
+
+- **2025.12.09**
+  - [[백준] Gold III. 벽 부수고 이동하기](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-III.-벽-부수고-이동하기)
