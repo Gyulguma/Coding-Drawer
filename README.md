@@ -41,3 +41,6 @@
 
 - **2025.12.10**
   - [[백준] Gold IV. 이분 그래프](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-IV.-이분-그래프)
+
+- **2025.12.11**
+  - [[백준] Gold III. 줄 세우기](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-III.-줄-세우기)
