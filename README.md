@@ -47,3 +47,4 @@
 
 - **2025.12.13**
   - [[백준] Gold I. 최종 순위](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-I.-최종-순위)
+  - [[백준] Gold IV. 타임머신](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-IV.-타임머신)
