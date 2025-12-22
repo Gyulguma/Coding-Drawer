@@ -51,3 +51,6 @@
 
 - **2025.12.17**
   - [[백준] Gold IV. 플로이드](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-IV.-플로이드)
+
+- **2025.12.22**
+  - [[백준] Gold IV. 운동](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-IV.-운동)
