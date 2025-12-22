@@ -55,3 +55,4 @@
 - **2025.12.22**
   - [[백준] Gold IV. 운동](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-IV.-운동)
   - [[백준] Silver III. 두 수의 합](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-III.-두-수의-합)
+  - [[백준] Gold V. 두 용액](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-V.-두-용액)
