@@ -57,3 +57,6 @@
   - [[백준] Silver III. 두 수의 합](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-III.-두-수의-합)
   - [[백준] Gold V. 두 용액](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-V.-두-용액)
   - [[백준] Gold III. 소수의 연속합](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-III.-소수의-연속합)
+
+- **2026.01.12**
+  - [[백준] Gold IV. 동전 1](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-IV.-동전-1)
