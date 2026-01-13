@@ -60,3 +60,6 @@
 
 - **2026.01.12**
   - [[백준] Gold IV. 동전 1](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-IV.-동전-1)
+
+- **2026.01.13**
+  - [[백준] Gold III. 파일 합치기](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-III.-파일-합치기)
