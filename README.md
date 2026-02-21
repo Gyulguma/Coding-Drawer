@@ -69,3 +69,6 @@
 
 - **2026.02.18**
   - [[백준] Gold II. 컵라면](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-II.-컵라면)
+
+- **2026.02.21**
+  - [[백준] Gold V. 센서](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-V.-센서)
