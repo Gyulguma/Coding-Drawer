@@ -72,3 +72,6 @@
 
 - **2026.02.21**
   - [[백준] Gold V. 센서](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-V.-센서)
+
+- **2026.02.23**
+  - [[백준] Silver III. 걷기](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-III.-걷기)
