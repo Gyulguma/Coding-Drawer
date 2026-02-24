@@ -75,3 +75,6 @@
 
 - **2026.02.23**
   - [[백준] Silver III. 걷기](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-III.-걷기)
+
+- **2026.02.24**
+  - [[백준] Gold V. MooTube (Silver)](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-V.-MooTube-(Silver))
