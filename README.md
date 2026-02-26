@@ -78,3 +78,6 @@
 
 - **2026.02.24**
   - [[백준] Gold V. MooTube (Silver)](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-V.-MooTube-(Silver))
+
+- **2026.02.26**
+  - [[백준] Bronze II. 거스름돈](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Bronze-II.-거스름돈)
