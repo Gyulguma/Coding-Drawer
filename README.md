@@ -82,3 +82,6 @@
 - **2026.02.26**
   - [[백준] Bronze II. 거스름돈](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Bronze-II.-거스름돈)
   - [[백준] Gold II. 레이스](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-II.-레이스)
+
+- **2026.02.27**
+  - [[백준] Silver I. 종이 접기](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-I.-종이-접기)
