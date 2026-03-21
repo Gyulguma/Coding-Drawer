@@ -85,3 +85,6 @@
 
 - **2026.02.27**
   - [[백준] Silver I. 종이 접기](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-I.-종이-접기)
+
+- **2026.03.21**
+  - [[백준] Silver III. 등수 매기기](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-III.-등수-매기기)
