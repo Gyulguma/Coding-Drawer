@@ -88,3 +88,6 @@
 
 - **2026.03.21**
   - [[백준] Silver III. 등수 매기기](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-III.-등수-매기기)
+
+- **2026.03.23**
+  - [[백준] Gold I. 풍선](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-I.-풍선)
