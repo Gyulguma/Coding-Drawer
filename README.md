@@ -91,3 +91,6 @@
 
 - **2026.03.23**
   - [[백준] Gold I. 풍선](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Gold-I.-풍선)
+
+- **2026.03.24**
+  - [[백준] Silver V. 문서 검색](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-V.-문서-검색)
