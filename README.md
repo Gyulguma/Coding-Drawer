@@ -94,3 +94,6 @@
 
 - **2026.03.24**
   - [[백준] Silver V. 문서 검색](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-V.-문서-검색)
+
+- **2026.04.04**
+  - [[프로그래머스] level 3. 네트워크](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-3.-네트워크)
