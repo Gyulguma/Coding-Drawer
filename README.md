@@ -98,3 +98,6 @@
 - **2026.04.04**
   - [[프로그래머스] level 3. 네트워크](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-3.-네트워크)
   - [[프로그래머스] level 2. 게임 맵 최단거리](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-게임-맵-최단거리)
+
+- **2026.04.06**
+  - [[백준] Silver V. 돌 게임](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-V.-돌-게임)
