@@ -104,3 +104,4 @@
 
 - **2026.04.07**
   - [[백준] Silver V. 줄세우기](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-V.-줄세우기)
+  - [[백준] Silver V. 올림픽](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-V.-올림픽)
