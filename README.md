@@ -108,3 +108,6 @@
 
 - **2026.04.09**
   - [[백준] Silver V. 덩치](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Silver-V.-덩치)
+
+- **2026.04.28**
+  - [[백준] Unrated. Good Bye, BOJ!](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Unrated.-Good-Bye,-BOJ!)
