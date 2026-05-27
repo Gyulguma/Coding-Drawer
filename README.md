@@ -111,3 +111,6 @@
 
 - **2026.04.28**
   - [[백준] Unrated. Good Bye, BOJ!](https://github.com/Gyulguma/Coding-Drawer/wiki/백준-Unrated.-Good-Bye,-BOJ!)
+
+- **2026.05.27**
+  - [[프로그래머스] level 2. JadenCase 문자열 만들기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-JadenCase-문자열-만들기)
