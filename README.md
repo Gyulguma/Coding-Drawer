@@ -114,3 +114,6 @@
 
 - **2026.05.27**
   - [[프로그래머스] level 2. JadenCase 문자열 만들기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-JadenCase-문자열-만들기)
+
+- **2026.05.29**
+  - [[프로그래머스] level 2. 최솟값 만들기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-최솟값-만들기)
