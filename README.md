@@ -122,3 +122,4 @@
 
 - **2026.05.30**
   - [[프로그래머스] level 2. 다음 큰 숫자](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-다음-큰-숫자)
+  - [[프로그래머스] level 2. 피보나치 수](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-피보나치-수)
