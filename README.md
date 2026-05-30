@@ -119,3 +119,6 @@
   - [[프로그래머스] level 2. 최솟값 만들기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-최솟값-만들기)
   - [[프로그래머스] level 2. 이진 변환 반복하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-이진-변환-반복하기)
   - [[프로그래머스] level 2. 숫자의 표현](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-숫자의-표현)
+
+- **2026.05.30**
+  - [[프로그래머스] level 2. 다음 큰 숫자](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-다음-큰-숫자)
