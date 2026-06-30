@@ -126,3 +126,6 @@
 
 - **2026.05.31**
   - [[프로그래머스] level 2. 짝지어 제거하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-짝지어-제거하기)
+
+- **2026.06.30**
+  - [[프로그래머스] level 2. 멀리 뛰기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-멀리-뛰기)
