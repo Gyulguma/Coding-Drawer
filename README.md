@@ -133,3 +133,4 @@
 
 - **2026.07.01**
   - [[프로그래머스] level 2. 구명보트](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-구명보트)
+  - [[프로그래머스] level 2. N개의 최소공배수](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-N개의-최소공배수)
