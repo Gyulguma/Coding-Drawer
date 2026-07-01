@@ -130,3 +130,6 @@
 - **2026.06.30**
   - [[프로그래머스] level 2. 멀리 뛰기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-멀리-뛰기)
   - [[프로그래머스] level 2. 점프와 순간 이동](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-점프와-순간-이동)
+
+- **2026.07.01**
+  - [[프로그래머스] level 2. 구명보트](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-구명보트)
