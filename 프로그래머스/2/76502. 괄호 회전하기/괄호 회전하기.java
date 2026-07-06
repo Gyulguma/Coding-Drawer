@@ -3,6 +3,11 @@ import java.util.*;
 class Solution {
     public int solution(String s) {
         int answer = 0;
+        Map<Character, Character> map = new HashMap<>();
+        map.put(')', '(');
+        map.put(']', '[');
+        map.put('}', '{');
+        
         Stack<Character> stack = new Stack<>();
         
         T: for(int i=0; i<s.length(); i++) {
@@ -16,9 +21,7 @@ class Solution {
                 }
                 
                 if(stack.isEmpty()) continue T;
-                if(c == ')' && stack.peek() != '(') continue T;
-                if(c == ']' && stack.peek() != '[') continue T;
-                if(c == '}' && stack.peek() != '{') continue T;
+                if(map.get(c) != stack.peek()) continue T;
                 stack.pop();
             }
             
