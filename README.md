@@ -139,3 +139,6 @@
   - [[프로그래머스] level 2. 연속 부분 수열 합의 개수](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-연속-부분-수열-합의-개수)
   - [[프로그래머스] level 2. 영어 끝말잇기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-영어-끝말잇기)
   - [[프로그래머스] level 2. 예상 대진표](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-예상-대진표)
+
+- **2026.07.06**
+  - [[프로그래머스] level 2. 할인 행사](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-할인-행사)
