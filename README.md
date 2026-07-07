@@ -143,3 +143,6 @@
 - **2026.07.06**
   - [[프로그래머스] level 2. 할인 행사](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-할인-행사)
   - [[프로그래머스] level 2. 괄호 회전하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-괄호-회전하기)
+
+- **2026.07.07**
+  - [[프로그래머스] level 2. n^2 배열 자르기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-n^2-배열-자르기)
