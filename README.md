@@ -149,3 +149,4 @@
 
 - **2026.07.09**
   - [[프로그래머스] level 2 1차. 캐시](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2-1차.-캐시)
+  - [[프로그래머스] level 2. 롤케이크 자르기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-롤케이크-자르기)
