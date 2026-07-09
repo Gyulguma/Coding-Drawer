@@ -146,3 +146,6 @@
 
 - **2026.07.07**
   - [[프로그래머스] level 2. n^2 배열 자르기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-n^2-배열-자르기)
+
+- **2026.07.09**
+  - [[프로그래머스] level 2 1차. 캐시](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2-1차.-캐시)
