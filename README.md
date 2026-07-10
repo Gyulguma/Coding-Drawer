@@ -152,3 +152,6 @@
   - [[프로그래머스] level 2. 롤케이크 자르기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-롤케이크-자르기)
   - [[프로그래머스] level 2. 튜플](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-튜플)
   - [[프로그래머스] level 2. 방문 길이](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-방문-길이)
+
+- **2026.07.10**
+  - [[프로그래머스] level 2 1차. 뉴스 클러스터링](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2-1차.-뉴스-클러스터링)
