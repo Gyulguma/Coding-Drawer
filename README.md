@@ -155,3 +155,6 @@
 
 - **2026.07.10**
   - [[프로그래머스] level 2 1차. 뉴스 클러스터링](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2-1차.-뉴스-클러스터링)
+
+- **2026.07.16**
+  - [[프로그래머스] level 2. 뒤에 있는 큰 수 찾기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-뒤에-있는-큰-수-찾기)
