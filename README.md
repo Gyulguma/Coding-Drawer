@@ -158,3 +158,6 @@
 
 - **2026.07.16**
   - [[프로그래머스] level 2. 뒤에 있는 큰 수 찾기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-뒤에-있는-큰-수-찾기)
+
+- **2026.07.17**
+  - [[프로그래머스] level 2. 땅따먹기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-땅따먹기)
