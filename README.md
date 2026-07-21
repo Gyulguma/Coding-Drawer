@@ -161,3 +161,6 @@
 
 - **2026.07.17**
   - [[프로그래머스] level 2. 땅따먹기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-땅따먹기)
+
+- **2026.07.21**
+  - [[프로그래머스] level 3. 야근 지수](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-3.-야근-지수)
