@@ -22,14 +22,15 @@ class Solution {
     }
     
     private String change(int number, int target) {
-        String result = "";
+        StringBuilder sb = new StringBuilder();
+        sb.append("");
         
         while(number > 0) {
             int idx = number%target;
-            result = num[idx] + result;
+            sb.append(num[idx]);
             number /= target;
         }
         
-        return result;
+        return sb.reverse().toString();
     }
 }
