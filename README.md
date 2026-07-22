@@ -165,3 +165,6 @@
 - **2026.07.21**
   - [[프로그래머스] level 3. 야근 지수](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-3.-야근-지수)
   - [[프로그래머스] level 1. 과일로 만든 아이스크림 고르기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-1.-과일로-만든-아이스크림-고르기)
+
+- **2026.07.22**
+  - [[프로그래머스] level 2 3차. n진수 게임](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2-3차.-n진수-게임)
