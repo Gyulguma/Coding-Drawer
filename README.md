@@ -169,3 +169,6 @@
 - **2026.07.22**
   - [[프로그래머스] level 2 3차. n진수 게임](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2-3차.-n진수-게임)
   - [[프로그래머스] level 1. 조건에 맞는 도서 리스트 출력하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-1.-조건에-맞는-도서-리스트-출력하기)
+
+- **2026.07.24**
+  - [[프로그래머스] level 2. 미로 탈출](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-미로-탈출)
