@@ -172,3 +172,6 @@
 
 - **2026.07.24**
   - [[프로그래머스] level 2. 미로 탈출](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-미로-탈출)
+
+- **2026.07.25**
+  - [[프로그래머스] level 2. 무인도 여행](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-무인도-여행)
