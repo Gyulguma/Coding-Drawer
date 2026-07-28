@@ -176,3 +176,6 @@
 - **2026.07.25**
   - [[프로그래머스] level 2. 무인도 여행](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-무인도-여행)
   - [[프로그래머스] level 3. 아이템 줍기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-3.-아이템-줍기)
+
+- **2026.07.28**
+  - [[프로그래머스] level 2. k진수에서 소수 개수 구하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-k진수에서-소수-개수-구하기)
