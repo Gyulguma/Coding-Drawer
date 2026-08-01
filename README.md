@@ -179,3 +179,6 @@
 
 - **2026.07.28**
   - [[프로그래머스] level 2. k진수에서 소수 개수 구하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-k진수에서-소수-개수-구하기)
+
+- **2026.08.01**
+  - [[프로그래머스] level 2 3차. 압축](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2-3차.-압축)
