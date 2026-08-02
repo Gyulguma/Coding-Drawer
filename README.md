@@ -183,3 +183,6 @@
 - **2026.08.01**
   - [[프로그래머스] level 2 3차. 압축](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2-3차.-압축)
   - [[프로그래머스] level 2. 숫자 변환하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-숫자-변환하기)
+
+- **2026.08.02**
+  - [[프로그래머스] level 2. 주차 요금 계산](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-주차-요금-계산)
