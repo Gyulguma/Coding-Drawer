@@ -186,3 +186,6 @@
 
 - **2026.08.02**
   - [[프로그래머스] level 2. 주차 요금 계산](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-주차-요금-계산)
+
+- **2026.08.03**
+  - [[프로그래머스] level 3. 숫자 게임](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-3.-숫자-게임)
