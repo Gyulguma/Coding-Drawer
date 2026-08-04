@@ -190,3 +190,6 @@
 - **2026.08.03**
   - [[프로그래머스] level 3. 숫자 게임](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-3.-숫자-게임)
   - [[프로그래머스] level 1. 흉부외과 또는 일반외과 의사 목록 출력하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-1.-흉부외과-또는-일반외과-의사-목록-출력하기)
+
+- **2026.08.04**
+  - [[프로그래머스] level 2. 스킬트리](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-스킬트리)
