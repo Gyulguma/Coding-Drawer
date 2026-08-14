@@ -193,3 +193,6 @@
 
 - **2026.08.04**
   - [[프로그래머스] level 2. 스킬트리](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-스킬트리)
+
+- **2026.08.14**
+  - [[프로그래머스] level 2. 2 x n 타일링](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-2-x-n-타일링)
