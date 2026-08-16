@@ -197,3 +197,6 @@
 - **2026.08.14**
   - [[프로그래머스] level 2. 2 x n 타일링](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-2-x-n-타일링)
   - [[프로그래머스] level 2. 재구매가 일어난 상품과 회원 리스트 구하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-재구매가-일어난-상품과-회원-리스트-구하기)
+
+- **2026.08.16**
+  - [[프로그래머스] level 3. 단속카메라](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-3.-단속카메라)
