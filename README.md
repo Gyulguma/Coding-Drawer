@@ -200,3 +200,4 @@
 
 - **2026.08.16**
   - [[프로그래머스] level 3. 단속카메라](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-3.-단속카메라)
+  - [[프로그래머스] level 1. 모든 레코드 조회하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-1.-모든-레코드-조회하기)
