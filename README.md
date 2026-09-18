@@ -216,3 +216,4 @@
   - [[프로그래머스] level 4. 특정 기간동안 대여 가능한 자동차들의 대여비용 구하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-4.-특정-기간동안-대여-가능한-자동차들의-대여비용-구하기)
   - [[프로그래머스] level 4. 5월 식품들의 총매출 조회하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-4.-5월-식품들의-총매출-조회하기)
   - [[프로그래머스] level 2. 조건에 맞는 도서와 저자 리스트 출력하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-조건에-맞는-도서와-저자-리스트-출력하기)
+  - [[프로그래머스] level 4. 그룹별 조건에 맞는 식당 목록 출력하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-4.-그룹별-조건에-맞는-식당-목록-출력하기)
