@@ -207,3 +207,4 @@
 
 - **2026.09.18**
   - [[프로그래머스] level 2. 의상](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-의상)
+  - [[프로그래머스] level 1. 같은 숫자는 싫어](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-1.-같은-숫자는-싫어)
