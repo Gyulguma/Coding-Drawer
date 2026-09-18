@@ -1,31 +1,35 @@
 import java.util.*;
 
 class Solution {
+    private boolean[] visited;
+    
     public int solution(int n, int[][] computers) {
         int answer = 0;
         
-        Queue<Integer> q = new LinkedList<>();
-        boolean[] visited = new boolean[n];
+        visited = new boolean[n];
         
-        for(int start = 0; start<n; start++){
-            if(visited[start]) continue;
-            
-            q.offer(start);
-            visited[start] = true;
-
-            while(!q.isEmpty()){
-                int node = q.poll();
-
-                for(int i=0; i<n; i++){
-                    if(computers[node][i] == 0 || visited[i]) continue;
-                    q.offer(i);
-                    visited[i] = true;
-                }
-            }
-            
+        for(int i=0; i<n; i++) {
+            if(visited[i]) continue;
+            bfs(i, computers);
             answer++;
         }
         
         return answer;
+    }
+    
+    private void bfs(int start, int[][] computers) {
+        Queue<Integer> q = new LinkedList<>();
+        q.offer(start);
+        visited[start] = true;
+        
+        while(!q.isEmpty()) {
+            int current = q.poll();
+            
+            for(int i=0; i<computers[current].length; i++) {
+                if(computers[current][i] == 0 || visited[i]) continue;
+                q.offer(i);
+                visited[i] = true;
+            }
+        }
     }
 }
