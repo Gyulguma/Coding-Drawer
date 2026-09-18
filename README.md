@@ -204,3 +204,6 @@
 
 - **2026.09.17**
   - [[프로그래머스] level 1. 완주하지 못한 선수](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-1.-완주하지-못한-선수)
+
+- **2026.09.18**
+  - [[프로그래머스] level 2. 의상](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-의상)
