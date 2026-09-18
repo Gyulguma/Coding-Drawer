@@ -1,0 +1,11 @@
+# 1. 입양 간 기록은 있는데 보호소에 들어온 기록이 없는 동물
+# 2. 동물 ID, 이름
+
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_OUTS o
+WHERE NOT EXISTS(
+    SELECT 1
+    FROM ANIMAL_INS i
+    WHERE o.ANIMAL_ID = i.ANIMAL_ID
+)
+ORDER BY ANIMAL_ID ASC;
