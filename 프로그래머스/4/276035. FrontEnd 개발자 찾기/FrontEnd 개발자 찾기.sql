@@ -1,0 +1,12 @@
+# 1. Front End 스킬을 가진 개발자
+# 2. 개발자 ID, 이메일, 이름, 성
+# 3. 정렬
+
+SELECT ID, EMAIL, FIRST_NAME, LAST_NAME
+FROM DEVELOPERS
+WHERE SKILL_CODE & (
+    SELECT BIT_OR(CODE)
+    FROM SKILLCODES
+    WHERE CATEGORY = 'Front End'
+) > 0
+ORDER BY ID ASC;
