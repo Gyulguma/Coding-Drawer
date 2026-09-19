@@ -221,3 +221,4 @@
 
 - **2026.09.19**
   - [[프로그래머스] level 3. 오랜 기간 보호한 동물(1)](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-3.-오랜-기간-보호한-동물(1))
+  - [[프로그래머스] level 4. 보호소에서 중성화한 동물](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-4.-보호소에서-중성화한-동물)
