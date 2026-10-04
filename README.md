@@ -228,3 +228,4 @@
 
 - **2026.10.04**
   - [[프로그래머스] level 3. 기지국 설치](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-3.-기지국-설치)
+  - [[프로그래머스] level 2 3차. 파일명 정렬](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2-3차.-파일명-정렬)
