@@ -225,3 +225,6 @@
   - [[프로그래머스] level 2. 상품 별 오프라인 매출 구하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-2.-상품-별-오프라인-매출-구하기)
   - [[프로그래머스] level 5. 상품을 구매한 회원 비율 구하기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-5.-상품을-구매한-회원-비율-구하기)
   - [[프로그래머스] level 4. FrontEnd 개발자 찾기](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-4.-FrontEnd-개발자-찾기)
+
+- **2026.10.04**
+  - [[프로그래머스] level 3. 기지국 설치](https://github.com/Gyulguma/Coding-Drawer/wiki/프로그래머스-level-3.-기지국-설치)
